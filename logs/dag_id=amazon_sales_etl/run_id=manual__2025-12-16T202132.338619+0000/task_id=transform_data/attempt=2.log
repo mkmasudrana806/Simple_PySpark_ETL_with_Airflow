@@ -1,0 +1,36 @@
+[2025-12-16T20:22:32.520+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.transform_data manual__2025-12-16T20:21:32.338619+00:00 [queued]>
+[2025-12-16T20:22:32.528+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.transform_data manual__2025-12-16T20:21:32.338619+00:00 [queued]>
+[2025-12-16T20:22:32.529+0000] {taskinstance.py:2170} INFO - Starting attempt 2 of 2
+[2025-12-16T20:22:32.540+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): transform_data> on 2025-12-16 20:21:32.338619+00:00
+[2025-12-16T20:22:32.545+0000] {standard_task_runner.py:60} INFO - Started process 509 to run task
+[2025-12-16T20:22:32.550+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'transform_data', 'manual__2025-12-16T20:21:32.338619+00:00', '--job-id', '20', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmpyaoqnr_t']
+[2025-12-16T20:22:32.553+0000] {standard_task_runner.py:88} INFO - Job 20: Subtask transform_data
+[2025-12-16T20:22:32.623+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.transform_data manual__2025-12-16T20:21:32.338619+00:00 [running]> on host 81e6fe386bc4
+[2025-12-16T20:22:32.699+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T20:21:32.338619+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T20:21:32.338619+00:00'
+[2025-12-16T20:22:32.701+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-12-16T20:22:32.702+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/spark/jobs/transform.py']
+[2025-12-16T20:22:32.713+0000] {subprocess.py:86} INFO - Output:
+[2025-12-16T20:22:34.484+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-12-16T20:22:34.485+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-12-16T20:22:34.650+0000] {subprocess.py:93} INFO - 25/12/16 20:22:34 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-12-16T20:22:38.225+0000] {subprocess.py:93} INFO - Spark started: 3.4.1
+[2025-12-16T20:22:38.232+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-16T20:22:38.233+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/transform.py", line 82, in <module>
+[2025-12-16T20:22:38.233+0000] {subprocess.py:93} INFO -     main()
+[2025-12-16T20:22:38.233+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/transform.py", line 39, in main
+[2025-12-16T20:22:38.234+0000] {subprocess.py:93} INFO -     df = df.withColumn("discounted_price", remove_symbol_and_cast("discounted_price", "float")) \
+[2025-12-16T20:22:38.234+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/transform.py", line 9, in remove_symbol_and_cast
+[2025-12-16T20:22:38.234+0000] {subprocess.py:93} INFO -     cleaned_symbol.try_cast(target_type)
+[2025-12-16T20:22:38.234+0000] {subprocess.py:93} INFO - TypeError: 'Column' object is not callable
+[2025-12-16T20:22:38.671+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-12-16T20:22:38.681+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-12-16T20:22:38.684+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=amazon_sales_etl, task_id=transform_data, execution_date=20251216T202132, start_date=20251216T202232, end_date=20251216T202238
+[2025-12-16T20:22:38.695+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 20 for task transform_data (Bash command failed. The command returned a non-zero exit code 1.; 509)
+[2025-12-16T20:22:38.734+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-12-16T20:22:38.751+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

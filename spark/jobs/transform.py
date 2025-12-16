@@ -6,7 +6,7 @@ def remove_symbol_and_cast(column_name, target_type):
     cleaned_symbol = regexp_replace(col(column_name), "[^\d.]", "")
     return when(
         cleaned_symbol.rlike(r"^\d+(\.\d+)?$"),
-        cleaned_symbol.try_cast(target_type)
+        cleaned_symbol.cast(target_type)
     ).otherwise(None)
 
 
@@ -14,11 +14,11 @@ def main():
     spark = SparkSession.builder.appName("Amazon_silver").getOrCreate()
     print("Spark started:", spark.version)
 
-    # raw_data_path = Path("/data/raw/amazon_sales_raw.csv")
-    raw_data_path = Path.cwd() / "data" / "raw" / "amazon_sales_raw.csv"
+    raw_data_path = Path("/data/raw/amazon_sales_raw.csv")
+    # raw_data_path = Path.cwd() / "data" / "raw" / "amazon_sales_raw.csv"
     
-    # processed_data_dir = Path("/data/processed")
-    processed_data_dir = Path.cwd() / "data" / "processed"
+    processed_data_dir = Path("/data/processed")
+    # processed_data_dir = Path.cwd() / "data" / "processed"
     
     processed_data_dir.mkdir(parents=True, exist_ok=True)
     processed_data_path = processed_data_dir / "amazon_sales_cleaned"
@@ -41,7 +41,7 @@ def main():
         .withColumn("discount_percentage", remove_symbol_and_cast("discount_percentage", "int")) \
         .withColumn("rating_count", remove_symbol_and_cast("rating_count", "int"))
 
-    df = df.withColumn("rating", col("rating").try_cast("float"))
+    df = df.withColumn("rating", col("rating").cast("float"))
     
     df = df.withColumn("price_difference", col("actual_price") - col("discounted_price"))
     

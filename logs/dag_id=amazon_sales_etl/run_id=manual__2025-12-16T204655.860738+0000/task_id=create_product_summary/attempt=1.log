@@ -1,0 +1,96 @@
+[2025-12-16T20:46:57.170+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.create_product_summary manual__2025-12-16T20:46:55.860738+00:00 [queued]>
+[2025-12-16T20:46:57.180+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.create_product_summary manual__2025-12-16T20:46:55.860738+00:00 [queued]>
+[2025-12-16T20:46:57.180+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-12-16T20:46:57.193+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_product_summary> on 2025-12-16 20:46:55.860738+00:00
+[2025-12-16T20:46:57.199+0000] {standard_task_runner.py:60} INFO - Started process 190 to run task
+[2025-12-16T20:46:57.203+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'create_product_summary', 'manual__2025-12-16T20:46:55.860738+00:00', '--job-id', '42', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmpsb0j2sdj']
+[2025-12-16T20:46:57.207+0000] {standard_task_runner.py:88} INFO - Job 42: Subtask create_product_summary
+[2025-12-16T20:46:57.283+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.create_product_summary manual__2025-12-16T20:46:55.860738+00:00 [running]> on host b1e4dc5ca0b7
+[2025-12-16T20:46:57.357+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='create_product_summary' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T20:46:55.860738+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T20:46:55.860738+00:00'
+[2025-12-16T20:46:57.358+0000] {sql.py:276} INFO - Executing: -- ============== create products_summary gold table ===============
+do $$
+begin
+	if not exists (select 1 from pg_type where typname = 'rating_bucket_enum')
+	then create type rating_bucket_enum as enum (
+		'Excellent',
+		'Good',
+		'Average',
+		'Poor'
+	);
+	end if;
+end$$;
+ 
+
+do $$
+begin
+    if not exists (select 1 from pg_type where typname = 'rating_strength_enum') then
+        create type rating_strength_enum as enum (
+            'very high',
+            'high',
+            'medium',
+            'low'
+        );
+    end if;
+end$$;
+
+
+
+create table if not exists product_summary (
+    product_id text,
+    product_title text,
+    category text,
+    avg_rating double precision,
+    rating_count integer,
+    discounted_price real,
+    actual_price real,
+    discount_percentage integer,
+    price_difference real,
+    rating_bucket rating_bucket_enum,
+    rating_strength rating_strength_enum
+);
+[2025-12-16T20:46:57.366+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-12-16T20:46:57.380+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-12-16T20:46:57.384+0000] {sql.py:450} INFO - Running statement: -- ============== create products_summary gold table ===============
+do $$
+begin
+	if not exists (select 1 from pg_type where typname = 'rating_bucket_enum')
+	then create type rating_bucket_enum as enum (
+		'Excellent',
+		'Good',
+		'Average',
+		'Poor'
+	);
+	end if;
+end$$;
+ 
+
+do $$
+begin
+    if not exists (select 1 from pg_type where typname = 'rating_strength_enum') then
+        create type rating_strength_enum as enum (
+            'very high',
+            'high',
+            'medium',
+            'low'
+        );
+    end if;
+end$$;
+
+
+
+create table if not exists product_summary (
+    product_id text,
+    product_title text,
+    category text,
+    avg_rating double precision,
+    rating_count integer,
+    discounted_price real,
+    actual_price real,
+    discount_percentage integer,
+    price_difference real,
+    rating_bucket rating_bucket_enum,
+    rating_strength rating_strength_enum
+);, parameters: None
+[2025-12-16T20:46:57.396+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=amazon_sales_etl, task_id=create_product_summary, execution_date=20251216T204655, start_date=20251216T204657, end_date=20251216T204657
+[2025-12-16T20:46:57.455+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-16T20:46:57.499+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

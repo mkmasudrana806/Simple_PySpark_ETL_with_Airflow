@@ -8,8 +8,8 @@ from py4j.protocol import Py4JJavaError
 def write_to_postgres(
     df_to_store,
     table_name: str,
-    mode: str = "overwrite",
-    jdbc_url: str = "jdbc:postgresql://localhost:5432/airflow",
+    mode: str = "append",
+    jdbc_url: str = "jdbc:postgresql://postgres:5432/airflow",
     user: str = "airflow",
     password: str = "airflow"
 ):
@@ -134,14 +134,14 @@ def main():
     print("Spark started:", spark.version)
 
     # --------- project root and gold data path ---------
-    project_root = Path.cwd()
-    gold_data_dir = project_root / "data" / "gold"
+    # project_root = Path.cwd()
+    # gold_data_dir = project_root / "data" / "gold"
+    gold_data_dir = Path("/data/gold")
     gold_data_dir.mkdir(parents=True, exist_ok=True)
     
     # -------- read clenaed data ----------------
-    cleaned_data_path = project_root / "data" / "processed" / "amazon_sales_cleaned"
-    # cleaned_data_path = Path("/data/processed/amazon_sales_cleaned.csv")
-    # cleaned_df = spark.read.parquet(str(cleaned_data_path))
+    # cleaned_data_path = project_root / "data" / "processed" / "amazon_sales_cleaned"
+    cleaned_data_path = Path("/data/processed/amazon_sales_cleaned")
     cleaned_df = spark.read.parquet(str(cleaned_data_path))
     cleaned_df.cache() # 
     

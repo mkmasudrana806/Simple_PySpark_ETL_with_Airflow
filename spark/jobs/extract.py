@@ -2,10 +2,10 @@ import kagglehub
 import shutil
 from pathlib import Path
 
-# RAW_DIR = Path("/data/raw")
+RAW_DIR = Path("/data/raw")
 
 def main():
-    RAW_DIR = Path.cwd() / "data" / "raw"
+    # RAW_DIR = Path.cwd() / "data" / "raw"
     RAW_DIR.mkdir(parents=True, exist_ok=True)
 
     downloaded_dir = kagglehub.dataset_download(

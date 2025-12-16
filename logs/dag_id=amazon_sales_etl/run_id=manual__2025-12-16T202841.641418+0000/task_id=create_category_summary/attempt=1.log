@@ -1,0 +1,36 @@
+[2025-12-16T20:28:42.593+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.create_category_summary manual__2025-12-16T20:28:41.641418+00:00 [queued]>
+[2025-12-16T20:28:42.602+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.create_category_summary manual__2025-12-16T20:28:41.641418+00:00 [queued]>
+[2025-12-16T20:28:42.603+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-12-16T20:28:42.617+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_category_summary> on 2025-12-16 20:28:41.641418+00:00
+[2025-12-16T20:28:42.622+0000] {standard_task_runner.py:60} INFO - Started process 965 to run task
+[2025-12-16T20:28:42.628+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'create_category_summary', 'manual__2025-12-16T20:28:41.641418+00:00', '--job-id', '26', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmpzv_8eh5g']
+[2025-12-16T20:28:42.630+0000] {standard_task_runner.py:88} INFO - Job 26: Subtask create_category_summary
+[2025-12-16T20:28:42.690+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.create_category_summary manual__2025-12-16T20:28:41.641418+00:00 [running]> on host 81e6fe386bc4
+[2025-12-16T20:28:42.770+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='create_category_summary' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T20:28:41.641418+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T20:28:41.641418+00:00'
+[2025-12-16T20:28:42.771+0000] {sql.py:276} INFO - Executing: 
+-- ============== create category_summary gold table ===============
+
+create table if not exists category_summary (
+    category text,
+    total_products integer not null,
+    avg_rating real,
+    avg_rating_count real,
+    avg_discount_percentage real,
+    avg_price_difference real
+);
+[2025-12-16T20:28:42.782+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-12-16T20:28:42.791+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-12-16T20:28:42.796+0000] {sql.py:450} INFO - Running statement: 
+-- ============== create category_summary gold table ===============
+
+create table if not exists category_summary (
+    category text,
+    total_products integer not null,
+    avg_rating real,
+    avg_rating_count real,
+    avg_discount_percentage real,
+    avg_price_difference real
+);, parameters: None
+[2025-12-16T20:28:42.805+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=amazon_sales_etl, task_id=create_category_summary, execution_date=20251216T202841, start_date=20251216T202842, end_date=20251216T202842
+[2025-12-16T20:28:42.920+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-16T20:28:42.939+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
