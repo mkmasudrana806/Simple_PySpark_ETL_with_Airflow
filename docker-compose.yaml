@@ -32,7 +32,7 @@ services:
       - ./dags:/opt/airflow/dags
       - ./spark:/opt/airflow/spark
       - ./sql:/opt/airflow/sql
-      - ./data:/opt/airflow/data
+      - ./data:/data
       - ./logs:/opt/airflow/logs
       - ./plugins:/opt/airflow/plugins
     ports:

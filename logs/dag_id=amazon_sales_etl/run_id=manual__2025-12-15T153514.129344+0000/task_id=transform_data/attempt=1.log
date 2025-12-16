@@ -1,0 +1,52 @@
+[2025-12-15T15:35:15.025+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.transform_data manual__2025-12-15T15:35:14.129344+00:00 [queued]>
+[2025-12-15T15:35:15.033+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.transform_data manual__2025-12-15T15:35:14.129344+00:00 [queued]>
+[2025-12-15T15:35:15.034+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-12-15T15:35:15.045+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): transform_data> on 2025-12-15 15:35:14.129344+00:00
+[2025-12-15T15:35:15.049+0000] {standard_task_runner.py:60} INFO - Started process 238 to run task
+[2025-12-15T15:35:15.052+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'transform_data', 'manual__2025-12-15T15:35:14.129344+00:00', '--job-id', '91', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmpkpjffvok']
+[2025-12-15T15:35:15.055+0000] {standard_task_runner.py:88} INFO - Job 91: Subtask transform_data
+[2025-12-15T15:35:15.112+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.transform_data manual__2025-12-15T15:35:14.129344+00:00 [running]> on host 77b5a49f3616
+[2025-12-15T15:35:15.190+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2025-12-15T15:35:14.129344+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-15T15:35:14.129344+00:00'
+[2025-12-15T15:35:15.192+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-12-15T15:35:15.193+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/spark/jobs/silver.py']
+[2025-12-15T15:35:15.200+0000] {subprocess.py:86} INFO - Output:
+[2025-12-15T15:35:16.966+0000] {subprocess.py:93} INFO - Exception in thread "main" org.apache.spark.SparkException: Master must either be yarn or start with spark, mesos, k8s, or local
+[2025-12-15T15:35:16.967+0000] {subprocess.py:93} INFO - 	at org.apache.spark.deploy.SparkSubmit.error(SparkSubmit.scala:1038)
+[2025-12-15T15:35:16.967+0000] {subprocess.py:93} INFO - 	at org.apache.spark.deploy.SparkSubmit.prepareSubmitEnvironment(SparkSubmit.scala:254)
+[2025-12-15T15:35:16.967+0000] {subprocess.py:93} INFO - 	at org.apache.spark.deploy.SparkSubmit.org$apache$spark$deploy$SparkSubmit$$runMain(SparkSubmit.scala:955)
+[2025-12-15T15:35:16.968+0000] {subprocess.py:93} INFO - 	at org.apache.spark.deploy.SparkSubmit.doRunMain$1(SparkSubmit.scala:192)
+[2025-12-15T15:35:16.968+0000] {subprocess.py:93} INFO - 	at org.apache.spark.deploy.SparkSubmit.submit(SparkSubmit.scala:215)
+[2025-12-15T15:35:16.969+0000] {subprocess.py:93} INFO - 	at org.apache.spark.deploy.SparkSubmit.doSubmit(SparkSubmit.scala:91)
+[2025-12-15T15:35:16.969+0000] {subprocess.py:93} INFO - 	at org.apache.spark.deploy.SparkSubmit$$anon$2.doSubmit(SparkSubmit.scala:1111)
+[2025-12-15T15:35:16.969+0000] {subprocess.py:93} INFO - 	at org.apache.spark.deploy.SparkSubmit$.main(SparkSubmit.scala:1120)
+[2025-12-15T15:35:16.970+0000] {subprocess.py:93} INFO - 	at org.apache.spark.deploy.SparkSubmit.main(SparkSubmit.scala)
+[2025-12-15T15:35:17.026+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-15T15:35:17.026+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/silver.py", line 95, in <module>
+[2025-12-15T15:35:17.027+0000] {subprocess.py:93} INFO -     main()
+[2025-12-15T15:35:17.027+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/silver.py", line 91, in main
+[2025-12-15T15:35:17.027+0000] {subprocess.py:93} INFO -     transform_amazon_sales()
+[2025-12-15T15:35:17.028+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/silver.py", line 6, in transform_amazon_sales
+[2025-12-15T15:35:17.028+0000] {subprocess.py:93} INFO -     spark = SparkSession.builder.master(["*"]).appName("Amazon_silver").getOrCreate()
+[2025-12-15T15:35:17.028+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/pyspark/sql/session.py", line 477, in getOrCreate
+[2025-12-15T15:35:17.028+0000] {subprocess.py:93} INFO -     sc = SparkContext.getOrCreate(sparkConf)
+[2025-12-15T15:35:17.029+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/pyspark/context.py", line 512, in getOrCreate
+[2025-12-15T15:35:17.029+0000] {subprocess.py:93} INFO -     SparkContext(conf=conf or SparkConf())
+[2025-12-15T15:35:17.029+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/pyspark/context.py", line 198, in __init__
+[2025-12-15T15:35:17.030+0000] {subprocess.py:93} INFO -     SparkContext._ensure_initialized(self, gateway=gateway, conf=conf)
+[2025-12-15T15:35:17.030+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/pyspark/context.py", line 432, in _ensure_initialized
+[2025-12-15T15:35:17.030+0000] {subprocess.py:93} INFO -     SparkContext._gateway = gateway or launch_gateway(conf)
+[2025-12-15T15:35:17.030+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/pyspark/java_gateway.py", line 106, in launch_gateway
+[2025-12-15T15:35:17.031+0000] {subprocess.py:93} INFO -     raise RuntimeError("Java gateway process exited before sending its port number")
+[2025-12-15T15:35:17.031+0000] {subprocess.py:93} INFO - RuntimeError: Java gateway process exited before sending its port number
+[2025-12-15T15:35:17.052+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-12-15T15:35:17.060+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-12-15T15:35:17.063+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=amazon_sales_etl, task_id=transform_data, execution_date=20251215T153514, start_date=20251215T153515, end_date=20251215T153517
+[2025-12-15T15:35:17.073+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 91 for task transform_data (Bash command failed. The command returned a non-zero exit code 1.; 238)
+[2025-12-15T15:35:17.114+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-12-15T15:35:17.127+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

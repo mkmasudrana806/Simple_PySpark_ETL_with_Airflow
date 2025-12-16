@@ -1,0 +1,98 @@
+[2025-12-15T11:06:00.074+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.create_product_summary manual__2025-12-15T11:05:59.576573+00:00 [queued]>
+[2025-12-15T11:06:00.084+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.create_product_summary manual__2025-12-15T11:05:59.576573+00:00 [queued]>
+[2025-12-15T11:06:00.085+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-12-15T11:06:00.101+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_product_summary> on 2025-12-15 11:05:59.576573+00:00
+[2025-12-15T11:06:00.108+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'create_product_summary', 'manual__2025-12-15T11:05:59.576573+00:00', '--job-id', '30', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmp06lt354l']
+[2025-12-15T11:06:00.112+0000] {standard_task_runner.py:88} INFO - Job 30: Subtask create_product_summary
+[2025-12-15T11:06:00.105+0000] {standard_task_runner.py:60} INFO - Started process 845 to run task
+[2025-12-15T11:06:00.170+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.create_product_summary manual__2025-12-15T11:05:59.576573+00:00 [running]> on host 9fedf83b1ce5
+[2025-12-15T11:06:00.241+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='create_product_summary' AIRFLOW_CTX_EXECUTION_DATE='2025-12-15T11:05:59.576573+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-15T11:05:59.576573+00:00'
+[2025-12-15T11:06:00.242+0000] {sql.py:276} INFO - Executing: 
+        do $$
+        begin
+            if not exists (select 1 from pg_type where typname = 'rating_bucket_enum')
+            then create type rating_bucket_enum as enum (
+                'Excellent',
+                'Good',
+                'Average',
+                'Poor'
+            );
+            end if;
+        end$$;
+        
+
+        do $$
+        begin
+            if not exists (select 1 from pg_type where typname = 'rating_strength_enum') then
+                create type rating_strength_enum as enum (
+                    'very high',
+                    'high',
+                    'medium',
+                    'low'
+                );
+        
+[2025-12-15T11:06:00.252+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-12-15T11:06:00.263+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-12-15T11:06:00.267+0000] {sql.py:450} INFO - Running statement: 
+        do $$
+        begin
+            if not exists (select 1 from pg_type where typname = 'rating_bucket_enum')
+            then create type rating_bucket_enum as enum (
+                'Excellent',
+                'Good',
+                'Average',
+                'Poor'
+            );
+            end if;
+        end$$;
+        
+
+        do $$
+        begin
+            if not exists (select 1 from pg_type where typname = 'rating_strength_enum') then
+                create type rating_strength_enum as enum (
+                    'very high',
+                    'high',
+                    'medium',
+                    'low'
+                );
+        , parameters: None
+[2025-12-15T11:06:00.269+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/operators/sql.py", line 282, in execute
+    output = hook.run(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 398, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 455, in _run_command
+    cur.execute(sql_statement)
+psycopg2.errors.SyntaxError: unterminated dollar-quoted string at or near "$$
+        begin
+            if not exists (select 1 from pg_type where typname = 'rating_strength_enum') then
+                create type rating_strength_enum as enum (
+                    'very high',
+                    'high',
+                    'medium',
+                    'low'
+                );
+        "
+LINE 15:         do $$
+                    ^
+
+[2025-12-15T11:06:00.279+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=amazon_sales_etl, task_id=create_product_summary, execution_date=20251215T110559, start_date=20251215T110600, end_date=20251215T110600
+[2025-12-15T11:06:00.289+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 30 for task create_product_summary (unterminated dollar-quoted string at or near "$$
+        begin
+            if not exists (select 1 from pg_type where typname = 'rating_strength_enum') then
+                create type rating_strength_enum as enum (
+                    'very high',
+                    'high',
+                    'medium',
+                    'low'
+                );
+        "
+LINE 15:         do $$
+                    ^
+; 845)
+[2025-12-15T11:06:00.330+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-12-15T11:06:00.348+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

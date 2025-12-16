@@ -1,0 +1,20 @@
+[2025-12-16T01:59:02.492+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.transform_data manual__2025-12-16T01:59:02.241448+00:00 [queued]>
+[2025-12-16T01:59:02.503+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.transform_data manual__2025-12-16T01:59:02.241448+00:00 [queued]>
+[2025-12-16T01:59:02.504+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-12-16T01:59:02.526+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): transform_data> on 2025-12-16 01:59:02.241448+00:00
+[2025-12-16T01:59:02.531+0000] {standard_task_runner.py:60} INFO - Started process 1124 to run task
+[2025-12-16T01:59:02.536+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'transform_data', 'manual__2025-12-16T01:59:02.241448+00:00', '--job-id', '107', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmpywl60djq']
+[2025-12-16T01:59:02.539+0000] {standard_task_runner.py:88} INFO - Job 107: Subtask transform_data
+[2025-12-16T01:59:02.600+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.transform_data manual__2025-12-16T01:59:02.241448+00:00 [running]> on host 77b5a49f3616
+[2025-12-16T01:59:02.668+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T01:59:02.241448+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T01:59:02.241448+00:00'
+[2025-12-16T01:59:02.669+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-12-16T01:59:02.671+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/spark/jobs/silver.py']
+[2025-12-16T01:59:02.678+0000] {subprocess.py:86} INFO - Output:
+[2025-12-16T01:59:04.253+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-12-16T01:59:04.253+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-12-16T01:59:04.381+0000] {subprocess.py:93} INFO - 25/12/16 01:59:04 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-12-16T01:59:10.258+0000] {subprocess.py:93} INFO - [Stage 1:>                                                          (0 + 1) / 1]                                                                                Spark started: 3.4.1
+[2025-12-16T01:59:10.647+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-12-16T01:59:10.669+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=amazon_sales_etl, task_id=transform_data, execution_date=20251216T015902, start_date=20251216T015902, end_date=20251216T015910
+[2025-12-16T01:59:10.690+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-16T01:59:10.702+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

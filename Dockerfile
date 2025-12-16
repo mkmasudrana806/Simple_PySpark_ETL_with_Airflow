@@ -13,4 +13,5 @@ USER airflow
 # Install Python dependencies
 RUN pip install --no-cache-dir \
     pyspark==3.4.1 \
-    psycopg2-binary
+    kagglehub \
+    psycopg2-binary 

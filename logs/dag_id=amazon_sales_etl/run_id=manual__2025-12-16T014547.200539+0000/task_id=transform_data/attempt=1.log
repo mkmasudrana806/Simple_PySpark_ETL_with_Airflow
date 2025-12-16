@@ -1,0 +1,33 @@
+[2025-12-16T01:45:48.398+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.transform_data manual__2025-12-16T01:45:47.200539+00:00 [queued]>
+[2025-12-16T01:45:48.406+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.transform_data manual__2025-12-16T01:45:47.200539+00:00 [queued]>
+[2025-12-16T01:45:48.407+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-12-16T01:45:48.419+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): transform_data> on 2025-12-16 01:45:47.200539+00:00
+[2025-12-16T01:45:48.423+0000] {standard_task_runner.py:60} INFO - Started process 430 to run task
+[2025-12-16T01:45:48.426+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'transform_data', 'manual__2025-12-16T01:45:47.200539+00:00', '--job-id', '100', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmpq0btux4s']
+[2025-12-16T01:45:48.428+0000] {standard_task_runner.py:88} INFO - Job 100: Subtask transform_data
+[2025-12-16T01:45:48.482+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.transform_data manual__2025-12-16T01:45:47.200539+00:00 [running]> on host 77b5a49f3616
+[2025-12-16T01:45:48.554+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T01:45:47.200539+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T01:45:47.200539+00:00'
+[2025-12-16T01:45:48.555+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-12-16T01:45:48.556+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/spark/jobs/silver.py']
+[2025-12-16T01:45:48.564+0000] {subprocess.py:86} INFO - Output:
+[2025-12-16T01:45:50.072+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-12-16T01:45:50.073+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-12-16T01:45:50.260+0000] {subprocess.py:93} INFO - 25/12/16 01:45:50 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-12-16T01:45:51.160+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-16T01:45:51.160+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/silver.py", line 73, in <module>
+[2025-12-16T01:45:51.161+0000] {subprocess.py:93} INFO -     main()
+[2025-12-16T01:45:51.161+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/silver.py", line 8, in main
+[2025-12-16T01:45:51.161+0000] {subprocess.py:93} INFO -     print("Spark started:", spark.version)
+[2025-12-16T01:45:51.162+0000] {subprocess.py:93} INFO - NameError: name 'spark' is not defined
+[2025-12-16T01:45:51.585+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-12-16T01:45:51.595+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-12-16T01:45:51.598+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=amazon_sales_etl, task_id=transform_data, execution_date=20251216T014547, start_date=20251216T014548, end_date=20251216T014551
+[2025-12-16T01:45:51.609+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 100 for task transform_data (Bash command failed. The command returned a non-zero exit code 1.; 430)
+[2025-12-16T01:45:51.650+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-12-16T01:45:51.664+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

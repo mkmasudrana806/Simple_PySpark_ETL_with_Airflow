@@ -1,0 +1,1 @@
+[2025-12-15T10:36:48.459+0000] {scheduler_job_runner.py:781} ERROR - Executor reports task instance <TaskInstance: amazon_sales_etl.create_top_product_summary manual__2025-12-15T10:36:47.074327+00:00 [queued]> finished (success) although the task says it's queued. (Info: None) Was the task killed externally?

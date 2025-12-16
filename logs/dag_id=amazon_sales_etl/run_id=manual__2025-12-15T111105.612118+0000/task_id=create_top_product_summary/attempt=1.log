@@ -1,0 +1,36 @@
+[2025-12-15T11:11:06.102+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.create_top_product_summary manual__2025-12-15T11:11:05.612118+00:00 [queued]>
+[2025-12-15T11:11:06.113+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.create_top_product_summary manual__2025-12-15T11:11:05.612118+00:00 [queued]>
+[2025-12-15T11:11:06.115+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-12-15T11:11:06.129+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_top_product_summary> on 2025-12-15 11:11:05.612118+00:00
+[2025-12-15T11:11:06.133+0000] {standard_task_runner.py:60} INFO - Started process 987 to run task
+[2025-12-15T11:11:06.137+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'create_top_product_summary', 'manual__2025-12-15T11:11:05.612118+00:00', '--job-id', '33', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmplrx2i2q8']
+[2025-12-15T11:11:06.140+0000] {standard_task_runner.py:88} INFO - Job 33: Subtask create_top_product_summary
+[2025-12-15T11:11:06.195+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.create_top_product_summary manual__2025-12-15T11:11:05.612118+00:00 [running]> on host 9fedf83b1ce5
+[2025-12-15T11:11:06.270+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='create_top_product_summary' AIRFLOW_CTX_EXECUTION_DATE='2025-12-15T11:11:05.612118+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-15T11:11:05.612118+00:00'
+[2025-12-15T11:11:06.272+0000] {sql.py:276} INFO - Executing: 
+            create table if not exists top_products (
+            product_id text,
+            product_name text,
+            category text,
+            rating real,
+            rating_count integer,
+            discounted_price real,
+            rank integer not null
+            );
+            
+[2025-12-15T11:11:06.279+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-12-15T11:11:06.288+0000] {base.py:83} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-12-15T11:11:06.292+0000] {sql.py:450} INFO - Running statement: 
+            create table if not exists top_products (
+            product_id text,
+            product_name text,
+            category text,
+            rating real,
+            rating_count integer,
+            discounted_price real,
+            rank integer not null
+            );
+            , parameters: None
+[2025-12-15T11:11:06.301+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=amazon_sales_etl, task_id=create_top_product_summary, execution_date=20251215T111105, start_date=20251215T111106, end_date=20251215T111106
+[2025-12-15T11:11:06.350+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-15T11:11:06.367+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
