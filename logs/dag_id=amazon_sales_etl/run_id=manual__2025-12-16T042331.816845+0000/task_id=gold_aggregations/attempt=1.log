@@ -1,0 +1,103 @@
+[2025-12-16T04:23:32.308+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.gold_aggregations manual__2025-12-16T04:23:31.816845+00:00 [queued]>
+[2025-12-16T04:23:32.317+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.gold_aggregations manual__2025-12-16T04:23:31.816845+00:00 [queued]>
+[2025-12-16T04:23:32.318+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-12-16T04:23:32.331+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): gold_aggregations> on 2025-12-16 04:23:31.816845+00:00
+[2025-12-16T04:23:32.335+0000] {standard_task_runner.py:60} INFO - Started process 3584 to run task
+[2025-12-16T04:23:32.339+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'gold_aggregations', 'manual__2025-12-16T04:23:31.816845+00:00', '--job-id', '112', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmpkcuyxg_z']
+[2025-12-16T04:23:32.341+0000] {standard_task_runner.py:88} INFO - Job 112: Subtask gold_aggregations
+[2025-12-16T04:23:32.397+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.gold_aggregations manual__2025-12-16T04:23:31.816845+00:00 [running]> on host 77b5a49f3616
+[2025-12-16T04:23:32.468+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='gold_aggregations' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T04:23:31.816845+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T04:23:31.816845+00:00'
+[2025-12-16T04:23:32.470+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-12-16T04:23:32.471+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/spark/jobs/gold.py']
+[2025-12-16T04:23:32.479+0000] {subprocess.py:86} INFO - Output:
+[2025-12-16T04:23:34.138+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-12-16T04:23:34.139+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-12-16T04:23:34.333+0000] {subprocess.py:93} INFO - 25/12/16 04:23:34 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-12-16T04:23:38.134+0000] {subprocess.py:93} INFO - Spark started: 3.4.1
+[2025-12-16T04:23:38.135+0000] {subprocess.py:93} INFO - JAVA EXCEPTION while writing product_summary
+[2025-12-16T04:23:38.135+0000] {subprocess.py:93} INFO - java.lang.ClassNotFoundException: org.postgresql.Driver
+[2025-12-16T04:23:38.144+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-16T04:23:38.144+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/gold.py", line 116, in <module>
+[2025-12-16T04:23:38.144+0000] {subprocess.py:93} INFO -     main()
+[2025-12-16T04:23:38.145+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/gold.py", line 102, in main
+[2025-12-16T04:23:38.145+0000] {subprocess.py:93} INFO -     write_to_postgres(product_summary_gold_df, "product_summary")
+[2025-12-16T04:23:38.146+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/gold.py", line 74, in write_to_postgres
+[2025-12-16T04:23:38.146+0000] {subprocess.py:93} INFO -     raise e
+[2025-12-16T04:23:38.146+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/gold.py", line 57, in write_to_postgres
+[2025-12-16T04:23:38.147+0000] {subprocess.py:93} INFO -     df.write
+[2025-12-16T04:23:38.147+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/pyspark/sql/readwriter.py", line 1919, in jdbc
+[2025-12-16T04:23:38.147+0000] {subprocess.py:93} INFO -     self.mode(mode)._jwrite.jdbc(url, table, jprop)
+[2025-12-16T04:23:38.148+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/py4j/java_gateway.py", line 1322, in __call__
+[2025-12-16T04:23:38.148+0000] {subprocess.py:93} INFO -     return_value = get_return_value(
+[2025-12-16T04:23:38.148+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/pyspark/errors/exceptions/captured.py", line 169, in deco
+[2025-12-16T04:23:38.149+0000] {subprocess.py:93} INFO -     return f(*a, **kw)
+[2025-12-16T04:23:38.149+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/py4j/protocol.py", line 326, in get_return_value
+[2025-12-16T04:23:38.149+0000] {subprocess.py:93} INFO -     raise Py4JJavaError(
+[2025-12-16T04:23:38.150+0000] {subprocess.py:93} INFO - py4j.protocol.Py4JJavaError: An error occurred while calling o30.jdbc.
+[2025-12-16T04:23:38.150+0000] {subprocess.py:93} INFO - : java.lang.ClassNotFoundException: org.postgresql.Driver
+[2025-12-16T04:23:38.150+0000] {subprocess.py:93} INFO - 	at java.base/java.net.URLClassLoader.findClass(URLClassLoader.java:445)
+[2025-12-16T04:23:38.151+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:592)
+[2025-12-16T04:23:38.151+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+[2025-12-16T04:23:38.151+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.DriverRegistry$.register(DriverRegistry.scala:46)
+[2025-12-16T04:23:38.152+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1(JDBCOptions.scala:103)
+[2025-12-16T04:23:38.152+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.$anonfun$driverClass$1$adapted(JDBCOptions.scala:103)
+[2025-12-16T04:23:38.152+0000] {subprocess.py:93} INFO - 	at scala.Option.foreach(Option.scala:407)
+[2025-12-16T04:23:38.153+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.<init>(JDBCOptions.scala:103)
+[2025-12-16T04:23:38.153+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JdbcOptionsInWrite.<init>(JDBCOptions.scala:246)
+[2025-12-16T04:23:38.153+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JdbcOptionsInWrite.<init>(JDBCOptions.scala:250)
+[2025-12-16T04:23:38.154+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.jdbc.JdbcRelationProvider.createRelation(JdbcRelationProvider.scala:47)
+[2025-12-16T04:23:38.154+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.SaveIntoDataSourceCommand.run(SaveIntoDataSourceCommand.scala:47)
+[2025-12-16T04:23:38.154+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.command.ExecutedCommandExec.sideEffectResult$lzycompute(commands.scala:75)
+[2025-12-16T04:23:38.155+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.command.ExecutedCommandExec.sideEffectResult(commands.scala:73)
+[2025-12-16T04:23:38.155+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.command.ExecutedCommandExec.executeCollect(commands.scala:84)
+[2025-12-16T04:23:38.155+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.$anonfun$applyOrElse$1(QueryExecution.scala:98)
+[2025-12-16T04:23:38.156+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:118)
+[2025-12-16T04:23:38.156+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:195)
+[2025-12-16T04:23:38.156+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:103)
+[2025-12-16T04:23:38.156+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:827)
+[2025-12-16T04:23:38.157+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:65)
+[2025-12-16T04:23:38.157+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:98)
+[2025-12-16T04:23:38.157+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:94)
+[2025-12-16T04:23:38.157+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:512)
+[2025-12-16T04:23:38.158+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(TreeNode.scala:104)
+[2025-12-16T04:23:38.158+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:512)
+[2025-12-16T04:23:38.158+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:31)
+[2025-12-16T04:23:38.158+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:267)
+[2025-12-16T04:23:38.159+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:263)
+[2025-12-16T04:23:38.159+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:31)
+[2025-12-16T04:23:38.159+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:31)
+[2025-12-16T04:23:38.159+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:488)
+[2025-12-16T04:23:38.160+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:94)
+[2025-12-16T04:23:38.160+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryExecution.scala:81)
+[2025-12-16T04:23:38.160+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:79)
+[2025-12-16T04:23:38.160+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.assertCommandExecuted(QueryExecution.scala:133)
+[2025-12-16T04:23:38.161+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.DataFrameWriter.runCommand(DataFrameWriter.scala:856)
+[2025-12-16T04:23:38.161+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.DataFrameWriter.saveToV1Source(DataFrameWriter.scala:387)
+[2025-12-16T04:23:38.161+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.DataFrameWriter.saveInternal(DataFrameWriter.scala:360)
+[2025-12-16T04:23:38.161+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:247)
+[2025-12-16T04:23:38.162+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.DataFrameWriter.jdbc(DataFrameWriter.scala:753)
+[2025-12-16T04:23:38.162+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2025-12-16T04:23:38.162+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+[2025-12-16T04:23:38.163+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2025-12-16T04:23:38.163+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+[2025-12-16T04:23:38.163+0000] {subprocess.py:93} INFO - 	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[2025-12-16T04:23:38.164+0000] {subprocess.py:93} INFO - 	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-12-16T04:23:38.164+0000] {subprocess.py:93} INFO - 	at py4j.Gateway.invoke(Gateway.java:282)
+[2025-12-16T04:23:38.164+0000] {subprocess.py:93} INFO - 	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[2025-12-16T04:23:38.164+0000] {subprocess.py:93} INFO - 	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[2025-12-16T04:23:38.165+0000] {subprocess.py:93} INFO - 	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-12-16T04:23:38.165+0000] {subprocess.py:93} INFO - 	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-12-16T04:23:38.165+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.Thread.run(Thread.java:840)
+[2025-12-16T04:23:38.165+0000] {subprocess.py:93} INFO - 
+[2025-12-16T04:23:38.569+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-12-16T04:23:38.579+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-12-16T04:23:38.581+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=amazon_sales_etl, task_id=gold_aggregations, execution_date=20251216T042331, start_date=20251216T042332, end_date=20251216T042338
+[2025-12-16T04:23:38.593+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 112 for task gold_aggregations (Bash command failed. The command returned a non-zero exit code 1.; 3584)
+[2025-12-16T04:23:38.607+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-12-16T04:23:38.619+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

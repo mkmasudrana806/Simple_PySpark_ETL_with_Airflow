@@ -43,12 +43,12 @@ with DAG(
 
     # create_product_summary >> create_category_summary >> create_top_product_summary >> create_discount_effectiveness
     
-    # extract_data = BashOperator(
-    #     task_id="extract_data",
-    #     bash_command="python /opt/airflow/spark/jobs/bronze.py"
-    # )
+    extract_data = BashOperator(
+        task_id="extract_data",
+        bash_command="python /opt/airflow/spark/jobs/extract.py"
+    )
     
-    # extract_data
+    extract_data
     
     # transform_data = BashOperator(
     #     task_id="transform_data",
@@ -57,7 +57,9 @@ with DAG(
     
     # transform_data
     
-    gold_layer = BashOperator(
-    task_id="gold_aggregations",
-    bash_command="python /opt/airflow/spark/jobs/gold.py"
-)
+    # gold_layer = BashOperator(
+    #     task_id="gold_aggregations",
+    #     bash_command="python /opt/airflow/spark/jobs/gold.py"
+    # )
+    
+    # gold_layer

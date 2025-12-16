@@ -2,15 +2,17 @@ import kagglehub
 import shutil
 from pathlib import Path
 
-RAW_DIR = Path("/data/raw")
+# RAW_DIR = Path("/data/raw")
 
 def main():
+    RAW_DIR = Path.cwd() / "data" / "raw"
     RAW_DIR.mkdir(parents=True, exist_ok=True)
-    
+
     downloaded_dir = kagglehub.dataset_download(
         "karkavelrajaj/amazon-sales-dataset",
         force_download=True
     )
+
 
     source_dir = Path(downloaded_dir)
 
@@ -24,7 +26,6 @@ def main():
 
     source_file = files[0]
 
-    RAW_DIR.mkdir(parents=True, exist_ok=True)
 
     target_file = RAW_DIR / f"amazon_sales_raw{source_file.suffix}"
 

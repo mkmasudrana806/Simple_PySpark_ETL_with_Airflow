@@ -1,0 +1,87 @@
+[2025-12-16T06:01:12.174+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.extract_data manual__2025-12-16T05:59:56.981164+00:00 [queued]>
+[2025-12-16T06:01:12.183+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.extract_data manual__2025-12-16T05:59:56.981164+00:00 [queued]>
+[2025-12-16T06:01:12.184+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 3
+[2025-12-16T06:01:12.198+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): extract_data> on 2025-12-16 05:59:56.981164+00:00
+[2025-12-16T06:01:12.202+0000] {standard_task_runner.py:60} INFO - Started process 239 to run task
+[2025-12-16T06:01:12.206+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'extract_data', 'manual__2025-12-16T05:59:56.981164+00:00', '--job-id', '131', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmpgg4tjfdy']
+[2025-12-16T06:01:12.210+0000] {standard_task_runner.py:88} INFO - Job 131: Subtask extract_data
+[2025-12-16T06:01:12.284+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.extract_data manual__2025-12-16T05:59:56.981164+00:00 [running]> on host 77b5a49f3616
+[2025-12-16T06:01:12.379+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='extract_data' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T05:59:56.981164+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T05:59:56.981164+00:00'
+[2025-12-16T06:01:12.380+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-12-16T06:01:12.381+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/spark/jobs/extract.py']
+[2025-12-16T06:01:12.390+0000] {subprocess.py:86} INFO - Output:
+[2025-12-16T06:01:17.620+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-16T06:01:17.620+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connection.py", line 174, in _new_conn
+[2025-12-16T06:01:17.621+0000] {subprocess.py:93} INFO -     conn = connection.create_connection(
+[2025-12-16T06:01:17.621+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/util/connection.py", line 95, in create_connection
+[2025-12-16T06:01:17.621+0000] {subprocess.py:93} INFO -     raise err
+[2025-12-16T06:01:17.622+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/util/connection.py", line 85, in create_connection
+[2025-12-16T06:01:17.622+0000] {subprocess.py:93} INFO -     sock.connect(sa)
+[2025-12-16T06:01:17.622+0000] {subprocess.py:93} INFO - socket.timeout: timed out
+[2025-12-16T06:01:17.622+0000] {subprocess.py:93} INFO - 
+[2025-12-16T06:01:17.623+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-12-16T06:01:17.623+0000] {subprocess.py:93} INFO - 
+[2025-12-16T06:01:17.623+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-16T06:01:17.624+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 715, in urlopen
+[2025-12-16T06:01:17.624+0000] {subprocess.py:93} INFO -     httplib_response = self._make_request(
+[2025-12-16T06:01:17.624+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 404, in _make_request
+[2025-12-16T06:01:17.625+0000] {subprocess.py:93} INFO -     self._validate_conn(conn)
+[2025-12-16T06:01:17.625+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 1058, in _validate_conn
+[2025-12-16T06:01:17.625+0000] {subprocess.py:93} INFO -     conn.connect()
+[2025-12-16T06:01:17.625+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connection.py", line 363, in connect
+[2025-12-16T06:01:17.626+0000] {subprocess.py:93} INFO -     self.sock = conn = self._new_conn()
+[2025-12-16T06:01:17.626+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connection.py", line 179, in _new_conn
+[2025-12-16T06:01:17.626+0000] {subprocess.py:93} INFO -     raise ConnectTimeoutError(
+[2025-12-16T06:01:17.627+0000] {subprocess.py:93} INFO - urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPSConnection object at 0x7892e414f760>, 'Connection to www.kaggle.com timed out. (connect timeout=5)')
+[2025-12-16T06:01:17.627+0000] {subprocess.py:93} INFO - 
+[2025-12-16T06:01:17.627+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-12-16T06:01:17.628+0000] {subprocess.py:93} INFO - 
+[2025-12-16T06:01:17.628+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-16T06:01:17.628+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/adapters.py", line 486, in send
+[2025-12-16T06:01:17.628+0000] {subprocess.py:93} INFO -     resp = conn.urlopen(
+[2025-12-16T06:01:17.629+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/connectionpool.py", line 799, in urlopen
+[2025-12-16T06:01:17.629+0000] {subprocess.py:93} INFO -     retries = retries.increment(
+[2025-12-16T06:01:17.629+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/urllib3/util/retry.py", line 592, in increment
+[2025-12-16T06:01:17.630+0000] {subprocess.py:93} INFO -     raise MaxRetryError(_pool, url, error or ResponseError(cause))
+[2025-12-16T06:01:17.630+0000] {subprocess.py:93} INFO - urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='www.kaggle.com', port=443): Max retries exceeded with url: /api/v1/datasets/view/karkavelrajaj/amazon-sales-dataset (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7892e414f760>, 'Connection to www.kaggle.com timed out. (connect timeout=5)'))
+[2025-12-16T06:01:17.630+0000] {subprocess.py:93} INFO - 
+[2025-12-16T06:01:17.631+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-12-16T06:01:17.631+0000] {subprocess.py:93} INFO - 
+[2025-12-16T06:01:17.631+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-12-16T06:01:17.632+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/extract.py", line 35, in <module>
+[2025-12-16T06:01:17.632+0000] {subprocess.py:93} INFO -     main()
+[2025-12-16T06:01:17.632+0000] {subprocess.py:93} INFO -   File "/opt/***/spark/jobs/extract.py", line 10, in main
+[2025-12-16T06:01:17.633+0000] {subprocess.py:93} INFO -     downloaded_dir = kagglehub.dataset_download(
+[2025-12-16T06:01:17.633+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/kagglehub/datasets.py", line 28, in dataset_download
+[2025-12-16T06:01:17.633+0000] {subprocess.py:93} INFO -     return registry.dataset_resolver(h, path, force_download=force_download)
+[2025-12-16T06:01:17.634+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/kagglehub/registry.py", line 23, in __call__
+[2025-12-16T06:01:17.634+0000] {subprocess.py:93} INFO -     return impl(*args, **kwargs)
+[2025-12-16T06:01:17.634+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/kagglehub/http_resolver.py", line 37, in __call__
+[2025-12-16T06:01:17.635+0000] {subprocess.py:93} INFO -     h.version = _get_current_version(api_client, h)
+[2025-12-16T06:01:17.635+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/kagglehub/http_resolver.py", line 160, in _get_current_version
+[2025-12-16T06:01:17.635+0000] {subprocess.py:93} INFO -     json_response = api_client.get(_build_get_dataset_url_path(h), h)
+[2025-12-16T06:01:17.636+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/kagglehub/clients.py", line 104, in get
+[2025-12-16T06:01:17.636+0000] {subprocess.py:93} INFO -     with requests.get(
+[2025-12-16T06:01:17.636+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/api.py", line 73, in get
+[2025-12-16T06:01:17.637+0000] {subprocess.py:93} INFO -     return request("get", url, params=params, **kwargs)
+[2025-12-16T06:01:17.637+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/api.py", line 59, in request
+[2025-12-16T06:01:17.637+0000] {subprocess.py:93} INFO -     return session.request(method=method, url=url, **kwargs)
+[2025-12-16T06:01:17.638+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/sessions.py", line 589, in request
+[2025-12-16T06:01:17.638+0000] {subprocess.py:93} INFO -     resp = self.send(prep, **send_kwargs)
+[2025-12-16T06:01:17.638+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/sessions.py", line 703, in send
+[2025-12-16T06:01:17.639+0000] {subprocess.py:93} INFO -     r = adapter.send(request, **kwargs)
+[2025-12-16T06:01:17.639+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/requests/adapters.py", line 507, in send
+[2025-12-16T06:01:17.639+0000] {subprocess.py:93} INFO -     raise ConnectTimeout(e, request=request)
+[2025-12-16T06:01:17.640+0000] {subprocess.py:93} INFO - requests.exceptions.ConnectTimeout: HTTPSConnectionPool(host='www.kaggle.com', port=443): Max retries exceeded with url: /api/v1/datasets/view/karkavelrajaj/amazon-sales-dataset (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7892e414f760>, 'Connection to www.kaggle.com timed out. (connect timeout=5)'))
+[2025-12-16T06:01:17.645+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-12-16T06:01:17.656+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-12-16T06:01:17.658+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=amazon_sales_etl, task_id=extract_data, execution_date=20251216T055956, start_date=20251216T060112, end_date=20251216T060117
+[2025-12-16T06:01:17.670+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 131 for task extract_data (Bash command failed. The command returned a non-zero exit code 1.; 239)
+[2025-12-16T06:01:17.714+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-12-16T06:01:17.726+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

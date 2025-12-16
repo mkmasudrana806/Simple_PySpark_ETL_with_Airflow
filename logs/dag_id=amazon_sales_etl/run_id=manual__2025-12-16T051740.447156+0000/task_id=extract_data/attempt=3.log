@@ -1,0 +1,23 @@
+[2025-12-16T06:04:34.483+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.extract_data manual__2025-12-16T05:17:40.447156+00:00 [queued]>
+[2025-12-16T06:04:34.491+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.extract_data manual__2025-12-16T05:17:40.447156+00:00 [queued]>
+[2025-12-16T06:04:34.492+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 3
+[2025-12-16T06:04:34.507+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): extract_data> on 2025-12-16 05:17:40.447156+00:00
+[2025-12-16T06:04:34.511+0000] {standard_task_runner.py:60} INFO - Started process 281 to run task
+[2025-12-16T06:04:34.516+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'extract_data', 'manual__2025-12-16T05:17:40.447156+00:00', '--job-id', '133', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmpp6ddbex7']
+[2025-12-16T06:04:34.519+0000] {standard_task_runner.py:88} INFO - Job 133: Subtask extract_data
+[2025-12-16T06:04:34.594+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.extract_data manual__2025-12-16T05:17:40.447156+00:00 [running]> on host 77b5a49f3616
+[2025-12-16T06:04:34.669+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='extract_data' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T05:17:40.447156+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T05:17:40.447156+00:00'
+[2025-12-16T06:04:34.670+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-12-16T06:04:34.671+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/spark/jobs/extract.py']
+[2025-12-16T06:04:34.682+0000] {subprocess.py:86} INFO - Output:
+[2025-12-16T06:04:43.631+0000] {subprocess.py:93} INFO - =-=-=--= extract task is running...........
+[2025-12-16T06:04:43.632+0000] {subprocess.py:93} INFO - Warning: Looks like you're using an outdated `kagglehub` version, please consider updating (latest version: 0.3.13)
+[2025-12-16T06:04:51.601+0000] {subprocess.py:93} INFO - Downloading from https://www.kaggle.com/api/v1/datasets/download/karkavelrajaj/amazon-sales-dataset?dataset_version_number=1...
+[2025-12-16T06:05:18.786+0000] {subprocess.py:93} INFO -   0%|          | 0.00/1.95M [00:00<?, ?B/s] 51%|█████▏    | 1.00M/1.95M [00:25<00:23, 41.8kB/s]100%|██████████| 1.95M/1.95M [00:27<00:00, 88.0kB/s]100%|██████████| 1.95M/1.95M [00:27<00:00, 75.2kB/s]Extracting model files...
+[2025-12-16T06:05:18.848+0000] {subprocess.py:93} INFO - 
+[2025-12-16T06:05:18.849+0000] {subprocess.py:93} INFO - ============= able to download the kaggle file
+[2025-12-16T06:05:18.849+0000] {subprocess.py:93} INFO - Bronze layer completed. File saved to: /data/raw/amazon_sales_raw.csv
+[2025-12-16T06:05:18.866+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-12-16T06:05:18.887+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=amazon_sales_etl, task_id=extract_data, execution_date=20251216T051740, start_date=20251216T060434, end_date=20251216T060518
+[2025-12-16T06:05:18.922+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-16T06:05:18.933+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

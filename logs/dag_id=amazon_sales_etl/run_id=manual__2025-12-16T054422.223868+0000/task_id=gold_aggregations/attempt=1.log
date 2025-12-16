@@ -1,0 +1,42 @@
+[2025-12-16T05:44:22.566+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: amazon_sales_etl.gold_aggregations manual__2025-12-16T05:44:22.223868+00:00 [queued]>
+[2025-12-16T05:44:22.575+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: amazon_sales_etl.gold_aggregations manual__2025-12-16T05:44:22.223868+00:00 [queued]>
+[2025-12-16T05:44:22.576+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-12-16T05:44:22.587+0000] {taskinstance.py:2191} INFO - Executing <Task(BashOperator): gold_aggregations> on 2025-12-16 05:44:22.223868+00:00
+[2025-12-16T05:44:22.592+0000] {standard_task_runner.py:60} INFO - Started process 1734 to run task
+[2025-12-16T05:44:22.596+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'amazon_sales_etl', 'gold_aggregations', 'manual__2025-12-16T05:44:22.223868+00:00', '--job-id', '123', '--raw', '--subdir', 'DAGS_FOLDER/amazon_sales_etl.py', '--cfg-path', '/tmp/tmpncss12b_']
+[2025-12-16T05:44:22.598+0000] {standard_task_runner.py:88} INFO - Job 123: Subtask gold_aggregations
+[2025-12-16T05:44:22.657+0000] {task_command.py:423} INFO - Running <TaskInstance: amazon_sales_etl.gold_aggregations manual__2025-12-16T05:44:22.223868+00:00 [running]> on host 77b5a49f3616
+[2025-12-16T05:44:22.738+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='amazon_sales_etl' AIRFLOW_CTX_TASK_ID='gold_aggregations' AIRFLOW_CTX_EXECUTION_DATE='2025-12-16T05:44:22.223868+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-16T05:44:22.223868+00:00'
+[2025-12-16T05:44:22.739+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-12-16T05:44:22.741+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /opt/***/spark/jobs/gold.py']
+[2025-12-16T05:44:22.750+0000] {subprocess.py:86} INFO - Output:
+[2025-12-16T05:44:24.285+0000] {subprocess.py:93} INFO - :: loading settings :: url = jar:file:/home/***/.local/lib/python3.8/site-packages/pyspark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2025-12-16T05:44:24.374+0000] {subprocess.py:93} INFO - Ivy Default Cache set to: /home/***/.ivy2/cache
+[2025-12-16T05:44:24.375+0000] {subprocess.py:93} INFO - The jars for the packages stored in: /home/***/.ivy2/jars
+[2025-12-16T05:44:24.378+0000] {subprocess.py:93} INFO - org.postgresql#postgresql added as a dependency
+[2025-12-16T05:44:24.379+0000] {subprocess.py:93} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-8ec83449-28f0-48f5-a321-7875a80d0001;1.0
+[2025-12-16T05:44:24.380+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-12-16T05:44:24.468+0000] {subprocess.py:93} INFO - 	found org.postgresql#postgresql;42.7.3 in central
+[2025-12-16T05:44:24.486+0000] {subprocess.py:93} INFO - 	found org.checkerframework#checker-qual;3.42.0 in central
+[2025-12-16T05:44:24.498+0000] {subprocess.py:93} INFO - :: resolution report :: resolve 114ms :: artifacts dl 5ms
+[2025-12-16T05:44:24.499+0000] {subprocess.py:93} INFO - 	:: modules in use:
+[2025-12-16T05:44:24.499+0000] {subprocess.py:93} INFO - 	org.checkerframework#checker-qual;3.42.0 from central in [default]
+[2025-12-16T05:44:24.500+0000] {subprocess.py:93} INFO - 	org.postgresql#postgresql;42.7.3 from central in [default]
+[2025-12-16T05:44:24.500+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-12-16T05:44:24.500+0000] {subprocess.py:93} INFO - 	|                  |            modules            ||   artifacts   |
+[2025-12-16T05:44:24.501+0000] {subprocess.py:93} INFO - 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-12-16T05:44:24.501+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-12-16T05:44:24.501+0000] {subprocess.py:93} INFO - 	|      default     |   2   |   0   |   0   |   0   ||   2   |   0   |
+[2025-12-16T05:44:24.502+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-12-16T05:44:24.502+0000] {subprocess.py:93} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-8ec83449-28f0-48f5-a321-7875a80d0001
+[2025-12-16T05:44:24.502+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-12-16T05:44:24.504+0000] {subprocess.py:93} INFO - 	0 artifacts copied, 2 already retrieved (0kB/3ms)
+[2025-12-16T05:44:24.645+0000] {subprocess.py:93} INFO - 25/12/16 05:44:24 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-12-16T05:44:24.771+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-12-16T05:44:24.772+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-12-16T05:44:29.869+0000] {subprocess.py:93} INFO - Spark started: 3.4.1
+[2025-12-16T05:44:29.869+0000] {subprocess.py:93} INFO - =========== total gold rows:  0
+[2025-12-16T05:44:30.253+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-12-16T05:44:30.275+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=amazon_sales_etl, task_id=gold_aggregations, execution_date=20251216T054422, start_date=20251216T054422, end_date=20251216T054430
+[2025-12-16T05:44:30.311+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-16T05:44:30.324+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

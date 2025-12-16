@@ -17,9 +17,9 @@ services:
       interval: 5s
       retries: 5
 
-  airflow:
+  airflow-webserver:
     build: .
-    container_name: airflow
+    container_name: airflow-webserver
     depends_on:
       postgres:
         condition: service_healthy
@@ -27,7 +27,6 @@ services:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-      AIRFLOW__CORE__FERNET_KEY: ""
     volumes:
       - ./dags:/opt/airflow/dags
       - ./spark:/opt/airflow/spark
@@ -37,18 +36,45 @@ services:
       - ./plugins:/opt/airflow/plugins
     ports:
       - "8080:8080"
+    command: airflow webserver
+
+  airflow-init:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
     command: >
       bash -c "
       airflow db upgrade &&
       airflow users create
         --username airflow
         --password airflow
-        --firstname admin
-        --lastname admin
+        --firstname Admin
+        --lastname User
         --role Admin
-        --email admin@example.com || true &&
-      airflow webserver & airflow scheduler
+        --email admin@example.com || true
       "
+
+  airflow-scheduler:
+    build: .
+    container_name: airflow-schedule
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./spark:/opt/airflow/spark
+      - ./sql:/opt/airflow/sql
+      - ./data:/data
+      - ./logs:/opt/airflow/logs
+      - ./plugins:/opt/airflow/plugins
+    command: airflow scheduler
 
 volumes:
   postgres-db-volume:

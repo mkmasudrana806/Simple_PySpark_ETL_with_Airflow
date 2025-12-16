@@ -28,7 +28,7 @@ end$$;
 
 create table if not exists product_summary (
     product_id text,
-    product_name text,
+    product_title text,
     category text,
     avg_rating double precision,
     rating_count integer,

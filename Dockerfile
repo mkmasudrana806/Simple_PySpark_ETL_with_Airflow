@@ -1,17 +1,18 @@
 FROM apache/airflow:2.8.1
 
+# System dependencies
+
 USER root
 
-# Install Java 17 (available in Debian bookworm)
 RUN apt-get update && \
     apt-get install -y openjdk-17-jdk && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Python dependencies
 USER airflow
 
-# Install Python dependencies
-RUN pip install --no-cache-dir \
-    pyspark==3.4.1 \
-    kagglehub \
-    psycopg2-binary 
+COPY requirements.txt /requirements.txt
+
+RUN pip install --no-cache-dir -r /requirements.txt
+
