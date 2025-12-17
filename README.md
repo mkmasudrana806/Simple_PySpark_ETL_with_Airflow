@@ -15,7 +15,7 @@ An end-to-end Data Engineering project that ingests raw Amazon sales data, proce
 
 ---
 
-## Architecture Overview
+## Architecture Diagram
 
 This project follows a **layered data architecture** commonly used in production data platforms.
 
