@@ -19,9 +19,7 @@ An end-to-end Data Engineering project that ingests raw Amazon sales data, proce
 
 This project follows a **layered data architecture** commonly used in production data platforms.
 
-- **Bronze Layer:** Raw data ingestion (CSV)
-- **Silver Layer:** Cleaned, validated, and normalized data
-- **Gold Layer:** Business-ready aggregated tables for analytics
+![Architecture Diagram](https://github.com/mkmasudrana806/Simple_PySpark_ETL_with_Airflow/blob/main/Architecture%20Diagram.png)
 
 ---
 
