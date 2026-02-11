@@ -144,9 +144,26 @@ project-root/
 
 ### Steps
 
+## Step 1
+
 ```bash
 docker compose up --build
 ```
+
+## Step 2
+Note: in your docker terminal must
+
+```bash
+docker exec -it airflow-webserver bash
+```
+
+## Step 3
+```bash
+airflow users create --username airflow --password airflow --firstname Admin --lastname User --role Admin --email admin@gmail.com
+```
+
+## Step 4
+Now enter the url and type username and password like given
 
 - Airflow UI: http://localhost:8080  
 - Default credentials:
