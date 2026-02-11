@@ -163,6 +163,28 @@ airflow users create --username airflow --password airflow --firstname Admin --l
 ```
 
 ## Step 4
+Create connection from UI
+
+Step 1: Open Airflow UI
+http://localhost:8080
+
+Step 2: Go to
+Admin → Connections
+
+Step 3: Click + Add Connection
+
+Fill this exactly:
+Connection Id	= postgres_default, 
+Connection Type	= Postgres,
+Host	= postgres,
+Schema	= airflow,
+Login =	airflow,
+Password	= airflow,
+Port = 5432
+
+Click Save.
+
+## Step 5
 Now enter the url and type username and password like given
 
 - Airflow UI: http://localhost:8080  
